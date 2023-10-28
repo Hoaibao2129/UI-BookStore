@@ -1,0 +1,37 @@
+<div style="padding-top: 50px">
+    <div class="card-header d-flex justify-content-between align-items-center hide-arrow border-white" style="width: 80%; margin-left: 50px;">
+        <h3 class="text-uppercase">
+          <dt>Tạo mới nhân viên</dt>
+        </h3>
+    </div>
+    <form [formGroup]="staffForm" (ngSubmit)="insertSaff()" class="row g-3" style=" width: 80%; margin-left: 40px;">
+        <div class="col-md-6">
+          <label for="inputEmail4" class="form-label">Tên nhân viên</label>
+          <input type="email" class="form-control" id="name" formControlName="name" autocomplete="off">
+        </div>
+        <div class="col-md-6">
+          <label for="inputPassword4" class="form-label">Số điện thoại</label>
+          <input  class="form-control" id="tel" formControlName="tel" autocomplete="off">
+        </div>
+        <div class="col-12">
+          <label for="inputAddress" class="form-label">Email</label>
+          <input type="text" class="form-control" id="email" formControlName="email" autocomplete="off">
+        </div>
+        <div class="col-12">
+            <label for="inputCity" class="form-label">Vai trò</label>
+            <select class="form-select" aria-label="Default select example" formControlName="roleName" >
+                <option selected >Chọn vai trò</option>
+                <option *ngFor="let item of roleList">{{item.roleName}}</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+          <label for="inputCity" class="form-label">Ngày tháng năm sinh</label>
+          <input type="text" class="form-control" id="birthday" formControlName="birthday" autocomplete="off">
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary" >Lưu</button>
+          <button type="click"  class="btn btn-light ms-2" (click)="back()">Quay lại</button>
+        </div>
+      </form>
+      <notifier-container></notifier-container>
+</div>

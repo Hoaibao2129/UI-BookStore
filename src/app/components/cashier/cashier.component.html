@@ -1,0 +1,71 @@
+<div style="padding-top: 50px">
+    <div class="card-header d-flex justify-content-between align-items-center hide-arrow border-white"
+        style="width: 80%; margin-left: 50px;">
+        <h3 class="text-uppercase">
+            <dt>Thanh toán</dt>
+        </h3>
+    </div>
+    <div class="row" style=" width: 80%; margin-left: 40px;">
+        <div class="col  pt-3">
+                <div class="dropdown">
+                    <input class="form-control me-2 form-select" type="search" placeholder="Tìm kiếm sách" aria-label="Search"
+                        data-bs-toggle="dropdown" [(ngModel)]="filter.name" (ngModelChange)="onSearch($event)">
+                    <ul class="dropdown-menu" style="width: 100%;">
+                        <li *ngFor="let item of data"><a class="dropdown-item" (click)="onResult(item)">{{item.name}}</a></li>
+                        <li *ngIf="data.length === 0" style="text-align: center;">Không có kết quả</li>
+                    </ul>
+                </div>
+        </div>
+        <form class="row g-3" [formGroup]="infoBook"> 
+            <div class="col-md-6">
+                <label for="inputEmail4" class="form-label">Tên sách</label>
+                <input type="text" class="form-control" id="inputEmail4" formControlName="name" readonly>
+            </div>
+            <div class="col-md-6">
+                <label for="inputPassword4" class="form-label">Số lượng</label>
+                <input type="text" class="form-control" id="inputPassword4" formControlName="quantity" (ngModelChange)="onChangeQuantity(infoBook.value)">
+            </div>
+            <div class="col-md-6">
+                <label for="inputEmail4" class="form-label">Giá Tiền</label>
+                <input type="text" class="form-control" id="inputEmail4" formControlName="total" readonly>
+            </div>
+            <div class="col-md-6">
+                <label for="inputPassword4" class="form-label">Giảm giá</label>
+                <input type="text" class="form-control" id="inputPassword4" formControlName="discount" (ngModelChange)="onChangeDiscount(infoBook.value)">
+            </div>
+        </form>
+        <table class="table table-bordered border-primary mt-3 " *ngIf="listBuyBooks.length > 0">
+            <thead>
+                <tr>
+                    <!-- <th scope="col">TT</th> -->
+                    <th scope="col">Tên sách</th>
+                    <th scope="col">Số lượng</th>
+                    <th scope="col">Giá</th>
+                    <th scope="col">Giảm giá</th>
+                    <th scope="col">Thành tiền</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let infoBook of listBuyBooks">
+                    <!-- <th scope="row">1</th> -->
+                    <td>{{infoBook.name}}</td>
+                    <td>{{infoBook.quantity}}</td>
+                    <td>{{infoBook.price | currency: "VND"}}</td>
+                    <td>{{infoBook.discount | currency: "VND"}}</td>
+                    <td>{{infoBook.totalMoney | currency: "VND"}}</td>
+                </tr>
+                <tr>
+                    <td colspan="1">Tổng</td>
+                    <td>{{quantity}}</td>
+                    <td>{{price | currency: "VND" }}</td>
+                    <td>{{discount | currency: "VND"}}</td>
+                    <td>{{totalMoney | currency: "VND"}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="" style="margin-left: 87%;">
+            <button type="submit" class="btn btn-primary" *ngIf="listBuyBooks.length > 0" (click)="onPayment()">Thanh toán</button>
+        </div>
+    </div>
+    <notifier-container></notifier-container>
+</div>
