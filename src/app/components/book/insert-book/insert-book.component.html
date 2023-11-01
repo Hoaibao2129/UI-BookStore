@@ -1,0 +1,30 @@
+<div style="padding-top: 50px">
+    <div class="card-header d-flex justify-content-between align-items-center hide-arrow border-white" style="width: 80%; margin-left: 50px;">
+        <h3 class="text-uppercase">
+          <dt>Thêm sách mới</dt>
+        </h3>
+    </div>
+    <form [formGroup]="bookForm" (ngSubmit)="insertBook()" class="row g-3" style=" width: 80%; margin-left: 40px;">
+        <div class="col-md-6">
+          <label for="inputEmail4" class="form-label">Tên sách</label>
+          <input type="email" class="form-control" id="bookName" formControlName="bookName" autocomplete="off" required>
+        </div>
+        <div class="col-md-6">
+          <label for="inputPassword4" class="form-label">Tên tác giả</label>
+          <input  class="form-control" id="authorName" formControlName="authorName" autocomplete="off">
+        </div>
+        <div class="col-md-6">
+          <label for="inputAddress" class="form-label">Giá tiền</label>
+          <input type="text" class="form-control" id="price" formControlName="price" autocomplete="off">
+        </div>
+        <div class="col-md-6">
+          <label for="inputCity" class="form-label">Số lượng</label>
+          <input type="text" class="form-control" id="quantity" formControlName="quantity" autocomplete="off">
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Lưu</button>
+          <button type="button" class="btn btn-light ms-2" (click)="back()">Quay lại</button>
+        </div>
+      </form>
+      <notifier-container></notifier-container>
+</div>
