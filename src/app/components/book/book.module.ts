@@ -1,11 +1,12 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes , RouterModule, Router} from '@angular/router';
 import { BookComponent } from './book.component';
 import { InsertBookComponent } from './insert-book/insert-book.component'
 import { FormsModule  , ReactiveFormsModule} from '@angular/forms';
 import { NotifierModule , NotifierOptions } from 'angular-notifier';
-
+import { InfoBookComponent } from './info-book/info-book.component';
+import { QRCodeModule } from 'angularx-qrcode';
 const customNotifierOptions: NotifierOptions = {
   position: {
 		horizontal: {
@@ -54,6 +55,10 @@ const bookRouter : Routes =[
   {
     path : 'them-sach',
     component : InsertBookComponent
+  },
+  {
+    path : 'thong-tin-sach/:id',
+    component : InfoBookComponent,
   }
 ]
 
@@ -61,13 +66,19 @@ const bookRouter : Routes =[
   declarations: [
     BookComponent,
     InsertBookComponent,
+    InfoBookComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    QRCodeModule,
     NotifierModule.withConfig(customNotifierOptions),
     RouterModule.forChild(bookRouter)
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA,
+    NO_ERRORS_SCHEMA
   ]
 })
 export class BookModule { }

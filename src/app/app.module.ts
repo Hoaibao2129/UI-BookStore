@@ -24,7 +24,7 @@ import { BookModule } from './components/book/book.module'
     CommonModule,
     StaffModuleModule,
     CashierModule,
-    BookModule
+    BookModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

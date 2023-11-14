@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BookService } from 'src/app/store/services/book.service';
-
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-book',
   templateUrl: './book.component.html',
@@ -8,8 +8,12 @@ import { BookService } from 'src/app/store/services/book.service';
 })
 export class BookComponent implements OnInit {
   constructor(
-    private bookService : BookService
-  ){}
+    private bookService : BookService,
+    public router : Router,
+    private route: ActivatedRoute
+  ){
+   
+  }
 
   listBooks : any ;
   sum : number ;
@@ -24,7 +28,7 @@ export class BookComponent implements OnInit {
   })
  }
 
- onDetailBook(data : any){
-  console.log(data);
+ onNavigateInfoBook(data : any){
+  this.router.navigate([`${"thong-tin-sach/" + data._id}`])
  }
 }

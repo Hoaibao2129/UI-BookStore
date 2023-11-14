@@ -30,4 +30,8 @@ export class BookService {
         return this.httpClient.post(this.url, body, { 'headers': headers });
     }
 
+    getListBookById(id : string){
+        return this.httpClient.get(this.url + `${"/" + id}`);
+    }
+
 }

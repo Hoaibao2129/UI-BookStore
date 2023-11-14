@@ -34,7 +34,7 @@
         </thead>
             <tbody *ngFor="let item of listBooks">
                 <tr>
-                  <th scope="row" class="text-primary" style="cursor: pointer ;" (click)="onDetailBook(item)">{{item.name}}</th>
+                  <th scope="row" class="text-primary" style="cursor: pointer ;" (click)="onNavigateInfoBook(item)">{{item.name}}</th>
                   <td>{{item.author}}</td>
                   <td>{{item.quantity}}</td>
                   <td>{{item.price | currency: "VND" }}</td>

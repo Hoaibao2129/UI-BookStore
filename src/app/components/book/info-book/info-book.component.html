@@ -1,0 +1,36 @@
+<div style="padding-top: 50px">
+    <div class="card-header d-flex justify-content-between align-items-center hide-arrow border-white" style="width: 80%; margin-left: 50px;">
+        <h3 class="text-uppercase">
+          <dt>Thông tin sách <i *ngIf="disable" class="fas fa-edit fa-xs" (click)="onCheck()"></i> <i *ngIf="!disable" class="fa-solid fa-x fa-2xs" (click)="onCheck()"></i> </dt>
+        </h3>
+    </div>
+    <form [formGroup]="infoBookForm" class="row g-3" style=" width: 80%; margin-left: 40px; margin-top: 20px;">
+        <div class="col-md-6">
+          <label for="inputEmail4" class="form-label">Tên sách</label>
+          <input type="email" class="form-control" id="bookName" formControlName="bookName" autocomplete="off" required >
+        </div>
+        <div class="col-md-6">
+          <label for="inputPassword4" class="form-label">Tên tác giả</label>
+          <input  class="form-control" id="authorName" formControlName="authorName" autocomplete="off" >
+        </div>
+        <div class="col-md-6">
+          <label for="inputAddress" class="form-label">Giá tiền</label>
+          <input type="text" class="form-control" id="price" formControlName="price" autocomplete="off">
+        </div>
+        <div class="col-md-6">
+          <label for="inputCity" class="form-label">Số lượng</label>
+          <input type="text" class="form-control" id="quantity" formControlName="quantity" autocomplete="off">
+        </div>
+        <div class="img">
+          <img [src]="qrData" width="200" height="200">
+          <button (click)="saveAsImage()">LƯU</button>
+        </div>
+        <div class="col-12 mt-2" >
+          
+          <button type="submit" class="btn btn-primary" *ngIf="disable" disabled >Lưu</button>
+          <button type="submit" class="btn btn-primary" *ngIf="!disable" >Lưu</button>
+          <button type="button" class="btn btn-light ms-2">Quay lại</button>
+        </div>
+      </form>
+      <notifier-container></notifier-container>
+</div>

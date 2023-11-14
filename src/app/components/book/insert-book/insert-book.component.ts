@@ -4,7 +4,7 @@ import { Book } from 'src/app/models/bookModel';
 import { BookService } from 'src/app/store/services/book.service';
 import { NotifierService } from 'angular-notifier';
 import { DatePipe, Location } from '@angular/common';
-
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-insert-book',
   templateUrl: './insert-book.component.html',
@@ -13,12 +13,14 @@ import { DatePipe, Location } from '@angular/common';
 export class InsertBookComponent implements OnInit {
 
   bookForm: FormGroup;
+  
   private readonly notifier: NotifierService;
 
   constructor(
    private bookService : BookService,
    private notifierService: NotifierService,
    public _location: Location,
+   public router : Router,
   ){ 
     this.notifier = notifierService;
   }
@@ -46,6 +48,11 @@ export class InsertBookComponent implements OnInit {
       })
       this.notifier.notify("success", "Thêm sách mới thành công")
     })
+  }
+
+  onNavigateInfoBook(data : any){
+    console.log(data);
+    this.router.navigate([`${"sach/thong-tin-sach/" + data._id}`])
   }
 
   booksForm = new FormGroup({
